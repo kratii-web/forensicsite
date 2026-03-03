@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ForensicLab Academy — Think Like an Investigator</title>
+    <meta name="description"
+        content="ForensicLab Academy — The premier platform for forensic science students. Virtual labs, crime scene simulations, study resources, and career guidance in forensic science.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔬</text></svg>">
+</head>
+
+<body>
+
+    <div class="bg-grid"></div>
+    <canvas id="particleCanvas" style="position:fixed;inset:0;pointer-events:none;z-index:1;"></canvas>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#" class="nav-logo">
+                <div class="logo-icon">🔬</div>
+                <div>
+                    <div>ForensicLab</div>
+                    <div class="logo-text-sub">Academy</div>
+                </div>
+            </a>
+            <div class="nav-links">
+                <a href="#home" class="active">Home</a>
+                <a href="#lab">Virtual Lab</a>
+                <a href="#crime-scene">Crime Scene</a>
+                <a href="#resources">Resources</a>
+                <a href="#evidence">Evidence</a>
+                <a href="#cases">Cases</a>
+                <a href="#real-cases">Real Cases</a>
+                <a href="#career">Career</a>
+                <a href="#community">Community</a>
+            </div>
+            <div class="nav-search">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="M21 21l-4.35-4.35" />
+                </svg>
+                <input type="text" placeholder="Search topics..." id="searchInput">
+            </div>
+            <a href="#quiz" class="nav-cta">Start Quiz</a>
+            <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-close" id="mobileClose">✕</button>
+        <a href="#home">Home</a>
+        <a href="#lab">Virtual Lab</a>
+        <a href="#crime-scene">Crime Scene</a>
+        <a href="#resources">Resources</a>
+        <a href="#evidence">Evidence</a>
+        <a href="#cases">Cases</a>
+        <a href="#real-cases">Real Cases</a>
+        <a href="#career">Career</a>
+        <a href="#community">Community</a>
+        <a href="#quiz">Start Quiz</a>
+    </div>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+        <div class="hero-bg-effects">
+            <div class="hero-orb hero-orb-1"></div>
+            <div class="hero-orb hero-orb-2"></div>
+            <div class="hero-orb hero-orb-3"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge"><span class="pulse"></span> Online Forensic Learning Platform</div>
+                <h1>
+                    <span class="line">Think Like an</span>
+                    <span class="line accent-line">Investigator.</span>
+                    <span class="line">Learn Like a</span>
+                    <span class="line accent-line">Forensic Expert.</span>
+                </h1>
+                <p class="hero-desc">
+                    Master forensic science through interactive virtual labs, real-world crime scene simulations, and
+                    expert-curated study materials. Your journey to becoming a forensic professional starts here.
+                </p>
+                <div class="hero-btns">
+                    <a href="#lab" class="btn-primary">
+                        <span>🔬</span> Enter Virtual Lab
+                    </a>
+                    <a href="#crime-scene" class="btn-secondary">
+                        <span>🎯</span> Solve a Case
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <h3 data-count="50" data-suffix="+">0</h3>
+                        <p>Lab Experiments</p>
+                    </div>
+                    <div class="hero-stat">
+                        <h3 data-count="120" data-suffix="+">0</h3>
+                        <p>Case Studies</p>
+                    </div>
+                    <div class="hero-stat">
+                        <h3 data-count="10000" data-suffix="+">0</h3>
+                        <p>Students Enrolled</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-dna">
+                    <div class="dna-helix"></div>
+                </div>
+                <div class="hero-floating-card" style="top:10%;right:-20px;">
+                    <div class="floating-card-icon">🧬</div>
+                    <div class="floating-card-text">DNA Analysis</div>
+                </div>
+                <div class="hero-floating-card" style="bottom:15%;left:-30px;">
+                    <div class="floating-card-icon">🔍</div>
+                    <div class="floating-card-text">Evidence Detection</div>
+                </div>
+                <div class="hero-floating-card" style="bottom:45%;right:-40px;">
+                    <div class="floating-card-icon">📊</div>
+                    <div class="floating-card-text">Data Reports</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== VIRTUAL LAB ===== -->
+    <section class="section" id="lab">
+        <div class="container">
+            <div class="reveal">
+                <div class="section-label">Virtual Forensic Lab</div>
+                <h2 class="section-title">Hands-On <span>Experiments</span></h2>
+                <p class="section-desc">Practice real forensic techniques in our interactive virtual laboratory. Each
+                    experiment includes theory, step-by-step procedures, and forensic significance.</p>
+            </div>
+            <div class="experiments-grid">
+                <div class="experiment-card reveal" data-experiment="hair">
+                    <div class="experiment-icon cyan">🔬</div>
+                    <h3>Hair Morphology Analysis</h3>
+                    <p>Examine microscopic hair characteristics — cuticle patterns, medullary index, and cortical
+                        texture to identify origin and association.</p>
+                    <div class="experiment-tags">
+                        <span class="experiment-tag">Microscopy</span>
+                        <span class="experiment-tag">Trace Evidence</span>
+                        <span class="experiment-tag">Identification</span>
+                    </div>
+                </div>
+                <div class="experiment-card reveal" data-experiment="blood">
+                    <div class="experiment-icon red">🩸</div>
+                    <h3>Blood Stain Pattern Analysis</h3>
+                    <p>Learn to interpret bloodstain shapes, angles of impact, and spatter distributions to reconstruct
+                        crime scene events.</p>
+                    <div class="experiment-tags">
+                        <span class="experiment-tag">BPA</span>
+                        <span class="experiment-tag">Reconstruction</span>
+                        <span class="experiment-tag">Physics</span>
+                    </div>
+                </div>
+                <div class="experiment-card reveal" data-experiment="fingerprint">
+                    <div class="experiment-icon yellow">👆</div>
+                    <h3>Fingerprint Examination</h3>
+                    <p>Master fingerprint detection, development, and comparison techniques. Identify ridge patterns —
+                        loops, whorls, and arches.</p>
+                    <div class="experiment-tags">
+                        <span class="experiment-tag">Dactyloscopy</span>
+                        <span class="experiment-tag">AFIS</span>
+                        <span class="experiment-tag">ACE-V</span>
+                    </div>
+                </div>
+                <div class="experiment-card reveal" data-experiment="fiber">
+                    <div class="experiment-icon green">🧵</div>
+                    <h3>Fiber & Soil Analysis</h3>
+                    <p>Analyze textile fibers and soil samples using microscopy and chemical methods to establish
+                        associative evidence links.</p>
+                    <div class="experiment-tags">
+                        <span class="experiment-tag">Trace</span>
+                        <span class="experiment-tag">Microscopy</span>
+                        <span class="experiment-tag">Chemistry</span>
+                    </div>
+                </div>
+                <div class="experiment-card reveal" data-experiment="">
+                    <div class="experiment-icon purple">💊</div>
+                    <h3>Toxicology Screening</h3>
+                    <p>Understand qualitative and quantitative analysis of poisons, drugs, and metabolites in biological
+                        samples.</p>
+                    <div class="experiment-tags">
+                        <span class="experiment-tag">Poisons</span>
+                        <span class="experiment-tag">Chromatography</span>
+                        <span class="experiment-tag">Spectroscopy</span>
+                    </div>
+                </div>
+                <div class="experiment-card reveal" data-experiment="">
+                    <div class="experiment-icon cyan">📝</div>
+                    <h3>Questioned Document Exam</h3>
+                    <p>Analyze handwriting, ink composition, paper characteristics, and detect alterations, forgeries,
+                        and counterfeits.</p>
+                    <div class="experiment-tags">
+                        <span class="experiment-tag">Handwriting</span>
+                        <span class="experiment-tag">Ink Analysis</span>
+                        <span class="experiment-tag">Forgery</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CRIME SCENE SIMULATION ===== -->
+    <section class="section" id="crime-scene">
+        <div class="container">
+            <div class="reveal">
+                <div class="section-label">Crime Scene Simulation</div>
+                <h2 class="section-title">Solve <span>Real Cases</span></h2>
+                <p class="section-desc">Step into immersive crime scene scenarios. Identify evidence, analyze clues, and
+                    solve cases like a professional investigator.</p>
+            </div>
+            <div class="crime-scene-area reveal">
+                <div class="crime-cards">
+                    <div class="crime-card">
+                        <div class="crime-card-header">
+                            <span class="crime-card-num">01</span>
+                            <h3>The Silent Witness</h3>
+                        </div>
+                        <p>A body is found in a locked apartment. No signs of forced entry. Multiple trace evidence
+                            items scattered around. Can you determine the cause and manner of death?</p>
+                        <a href="#" class="crime-card-btn">Start Investigation →</a>
+                    </div>
+                    <div class="crime-card">
+                        <div class="crime-card-header">
+                            <span class="crime-card-num">02</span>
+                            <h3>Vanishing Evidence</h3>
+                        </div>
+                        <p>A hit-and-run accident with minimal physical evidence. Paint chips, tire marks, and a single
+                            fiber are your only leads. Reconstruct the sequence of events.</p>
+                        <a href="#" class="crime-card-btn">Start Investigation →</a>
+                    </div>
+                    <div class="crime-card">
+                        <div class="crime-card-header">
+                            <span class="crime-card-num">03</span>
+                            <h3>The Forged Identity</h3>
+                        </div>
+                        <p>Suspected document fraud in a high-profile case. Analyze handwriting samples, ink
+                            composition, and paper characteristics to expose the forgery.</p>
+                        <a href="#" class="crime-card-btn">Start Investigation →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STUDY RESOURCES ===== -->
+    <section class="section" id="resources">
+        <div class="container">
+            <div class="reveal">
+                <div class="section-label">Study Resources</div>
+                <h2 class="section-title">Learn & <span>Prepare</span></h2>
+                <p class="section-desc">Access comprehensive study materials, examination preparation guides, and
+                    downloadable resources for your forensic science journey.</p>
+            </div>
+            <div class="resources-grid">
+                <div class="resource-card reveal">
+                    <div class="resource-icon">📚</div>
+                    <h3>Lecture Notes</h3>
+                    <p>Detailed notes covering all major forensic disciplines — from criminalistics to forensic
+                        pathology.</p>
+                    <div class="resource-count">45+ Topics Available</div>
+                </div>
+                <div class="resource-card reveal">
+                    <div class="resource-icon">📊</div>
+                    <h3>Diagrams & Charts</h3>
+                    <p>High-resolution forensic diagrams, flowcharts, and visual study aids for complex concepts.</p>
+                    <div class="resource-count">200+ Diagrams</div>
+                </div>
+                <div class="resource-card reveal">
+                    <div class="resource-icon">💬</div>
+                    <h3>Viva Questions</h3>
+                    <p>Curated question banks for oral examinations with model answers and discussion points.</p>
+                    <div class="resource-count">500+ Questions</div>
+                </div>
+                <div class="resource-card reveal">
+                    <div class="resource-icon">📝</div>
+                    <h3>Exam Preparation</h3>
+                    <p>Previous year papers, mock tests, and study schedules for competitive exams in forensic science.
+                    </p>
+                    <div class="resource-count">30+ Mock Tests</div>
+                </div>
+                <div class="resource-card reveal">
+                    <div class="resource-icon">📋</div>
+                    <h3>Lab Report Templates</h3>
+                    <p>Downloadable, standardized lab report formats for all practical experiments and analysis.</p>
+                    <div class="resource-count">25+ Templates</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== EVIDENCE ANALYSIS LIBRARY ===== -->
+    <section class="section" id="evidence">
+        <div class="container">
+            <div class="reveal">
+                <div class="section-label">Evidence Analysis Library</div>
+                <h2 class="section-title">Evidence <span>Database</span></h2>
+                <p class="section-desc">Explore our comprehensive evidence analysis library organized by forensic
+                    discipline. Deep-dive into each category.</p>
+            </div>
+            <div class="evidence-tabs reveal">
+                <button class="evidence-tab active" data-tab="all">All Evidence</button>
+                <button class="evidence-tab" data-tab="biological">Biological</button>
+                <button class="evidence-tab" data-tab="toxicology">Toxicology</button>
+                <button class="evidence-tab" data-tab="ballistics">Ballistics</button>
+                <button class="evidence-tab" data-tab="documents">Documents</button>
+                <button class="evidence-tab" data-tab="digital">Digital</button>
+            </div>
+            <div class="evidence-grid reveal">
+                <div class="evidence-item evidence-group" data-category="biological">
+                    <div class="evidence-item-icon">🧬</div>
+                    <div>
+                        <h4>DNA Profiling</h4>
+                        <p>STR analysis, PCR amplification, CODIS database, mitochondrial DNA, touch DNA, and mixture
+                            interpretation.</p>
+                    </div>
+                </div>
+                <div class="evidence-item evidence-group" data-category="biological">
+                    <div class="evidence-item-icon">🩸</div>
+                    <div>
+                        <h4>Serology</h4>
+                        <p>Blood typing, presumptive and confirmatory tests, body fluid identification, and species
+                            determination.</p>
+                    </div>
+                </div>
+                <div class="evidence-item evidence-group" data-category="toxicology">
+                    <div class="evidence-item-icon">💊</div>
+                    <div>
+                        <h4>Drug Analysis</h4>
+                        <p>Controlled substance identification, metabolite screening, quantitative analysis, and
+                            pharmacokinetics.</p>
+                    </div>
+                </div>
+                <div class="evidence-item evidence-group" data-category="toxicology">
+                    <div class="evidence-item-icon">☠️</div>
+                    <div>
+                        <h4>Poison Detection</h4>
+                        <p>Systematic toxicological analysis, heavy metals, organic poisons, and postmortem
+                            redistribution.</p>
+                    </div>
+                </div>
+                <div class="evidence-item evidence-group" data-category="ballistics">
+                    <div class="evidence-item-icon">🎯</div>
+                    <div>
+                        <h4>Firearm Identification</h4>
+                        <p>Barrel rifling, bullet comparison, cartridge case analysis, IBIS database, and trajectory
+                            reconstruction.</p>
+                    </div>
+                </div>
+                <div class="evidence-item evidence-group" data-category="ballistics">
+                    <div class="evidence-item-icon">💥</div>
+                    <div>
+                        <h4>Gunshot Residue</h4>
+                        <p>GSR collection, SEM-EDX analysis, distance determination, and primer composition analysis.
+                        </p>
+                    </div>
+                </div>
+                <div class="evidence-item evidence-group" data-category="documents">
+                    <div class="evidence-item-icon">✍️</div>
+                    <div>
+                        <h4>Handwriting Analysis</h4>
+                        <p>Individual characteristics, class characteristics, document comparison, and signature
+                            verification.</p>
+                    </div>
+                </div>
+                <div class="evidence-item evidence-group" data-category="documents">
+                    <div class="evidence-item-icon">🖨️</div>
+                    <div>
+                        <h4>Printing & Ink Analysis</h4>
+                        <p>Ink dating, TLC analysis, printer identification, document alteration detection, and paper
+                            analysis.</p>
+                    </div>
+                </div>
+                <div class="evidence-item evidence-group" data-category="digital">
+                    <div class="evidence-item-icon">💻</div>
+                    <div>
+                        <h4>Computer Forensics</h4>
+                        <p>Disk imaging, file recovery, metadata analysis, browser forensics, and encryption handling.
+                        </p>
+                    </div>
+                </div>
+                <div class="evidence-item evidence-group" data-category="digital">
+                    <div class="evidence-item-icon">📱</div>
+                    <div>
+                        <h4>Mobile Device Forensics</h4>
+                        <p>Data acquisition, call records, location data, app analysis, and cloud storage investigation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CASE STUDIES ===== -->
+    <section class="section" id="cases">
+        <div class="container">
+            <div class="reveal">
+                <div class="section-label">Case Studies</div>
+                <h2 class="section-title">Learn From <span>Real Cases</span></h2>
+                <p class="section-desc">Study educational forensic case breakdowns with detailed investigation
+                    processes, evidence analysis, and expert commentary.</p>
+            </div>
+            <div class="cases-grid">
+                <div class="case-card reveal">
+                    <div class="case-card-img scene-1">
+                        🔍
+                        <span class="case-badge solved">SOLVED</span>
+                    </div>
+                    <div class="case-card-body">
+                        <h3>The Fiber Link: Textile Evidence in Assault Case</h3>
+                        <p>How microscopic fiber analysis from a victim's clothing led investigators to identify the
+                            suspect's vehicle, establishing critical associative evidence that broke the case.</p>
+                        <div class="case-meta">
+                            <span>📂 Trace Evidence</span>
+                            <span>⏱ 15 min read</span>
+                            <span>📊 Intermediate</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="case-card reveal">
+                    <div class="case-card-img scene-2">
+                        🩸
+                        <span class="case-badge solved">SOLVED</span>
+                    </div>
+                    <div class="case-card-body">
+                        <h3>Bloodstain Patterns: Reconstructing a Home Invasion</h3>
+                        <p>A detailed walkthrough of how BPA analysts reconstructed the sequence of events in a staged
+                            crime scene, revealing the true nature of the incident.</p>
+                        <div class="case-meta">
+                            <span>📂 BPA</span>
+                            <span>⏱ 20 min read</span>
+                            <span>📊 Advanced</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="case-card reveal">
+                    <div class="case-card-img scene-3">
+                        💊
+                        <span class="case-badge ongoing">EDUCATIONAL</span>
+                    </div>
+                    <div class="case-card-body">
+                        <h3>The Poisoned Chalice: Toxicological Investigation</h3>
+                        <p>An examination of systematic toxicological analysis methods used to identify an unusual
+                            poison in postmortem samples, solving a mysterious death case.</p>
+                        <div class="case-meta">
+                            <span>📂 Toxicology</span>
+                            <span>⏱ 18 min read</span>
+                            <span>📊 Advanced</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== REAL WORLD CASES — THRILLER ===== -->
+    <section class="thriller-section" id="real-cases">
+        <div class="thriller-orb thriller-orb-1"></div>
+        <div class="thriller-orb thriller-orb-2"></div>
+        <div class="thriller-orb thriller-orb-3"></div>
+        <div class="container">
+            <div class="reveal">
+                <div class="section-label">Real World Criminal Cases</div>
+                <h2 class="section-title">Case Files: <span>Infamous Crimes</span></h2>
+                <p class="section-desc">Study the forensic techniques that cracked — or failed to crack — history's most
+                    notorious criminal cases. Every case is a lesson in forensic science.</p>
+            </div>
+
+            <div class="rwc-filters reveal">
+                <button class="rwc-filter active" data-rwc="all">All Cases</button>
+                <button class="rwc-filter" data-rwc="serial">Serial Killers</button>
+                <button class="rwc-filter" data-rwc="murder">Murder</button>
+                <button class="rwc-filter" data-rwc="unsolved">Unsolved</button>
+                <button class="rwc-filter" data-rwc="landmark">Landmark Trials</button>
+            </div>
+
+            <div class="rwc-grid">
+
+                <!-- Case 1: Jack the Ripper -->
+                <div class="rwc-card reveal" data-rwc-cat="serial unsolved">
+                    <div class="rwc-card-visual">
+                        <div class="rwc-visual-bg rwc-bg-1"></div>
+                        <span class="rwc-country">🇬🇧 London, UK</span>
+                        <span class="rwc-year">1888</span>
+                        <span class="rwc-visual-icon">🗡️</span>
+                        <span class="rwc-classified">CLASSIFIED</span>
+                    </div>
+                    <div class="rwc-card-body">
+                        <h3>Jack the Ripper — The Whitechapel Murders</h3>
+                        <p>The unidentified serial killer terrorized London's Whitechapel district, brutally murdering
+                            at least five women. Despite extensive investigation, the killer was never identified —
+                            making it one of history's most infamous cold cases.</p>
+                        <div class="rwc-techniques">
+                            <span class="rwc-tech-tag">Autopsy Analysis</span>
+                            <span class="rwc-tech-tag">Victimology</span>
+                            <span class="rwc-tech-tag">Criminal Profiling</span>
+                            <span class="rwc-tech-tag">Witness Testimony</span>
+                        </div>
+                        <div class="rwc-outcome">
+                            <div class="rwc-status unsolved">
+                                <span class="rwc-status-dot"></span>
+                                UNSOLVED
+                            </div>
+                            <span class="rwc-read-more">Read Analysis →</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 2: Ted Bundy -->
+                <div class="rwc-card reveal" data-rwc-cat="serial landmark">
+                    <div class="rwc-card-visual">
+                        <div class="rwc-visual-bg rwc-bg-2"></div>
+                        <span class="rwc-country">🇺🇸 USA</span>
+                        <span class="rwc-year">1974–1978</span>
+                        <span class="rwc-visual-icon">⛓️</span>
+                        <span class="rwc-classified">CASE FILE</span>
+                    </div>
+                    <div class="rwc-card-body">
+                        <h3>Ted Bundy — The Charismatic Serial Killer</h3>
+                        <p>Ted Bundy confessed to 30 murders across seven US states. His case revolutionized forensic
+                            odontology — a bite mark on a victim's body became the key evidence that convicted him in
+                            the landmark Florida trial.</p>
+                        <div class="rwc-techniques">
+                            <span class="rwc-tech-tag">Forensic Odontology</span>
+                            <span class="rwc-tech-tag">Bite Mark Analysis</span>
+                            <span class="rwc-tech-tag">Hair & Fiber</span>
+                            <span class="rwc-tech-tag">Criminal Profiling</span>
+                        </div>
+                        <div class="rwc-outcome">
+                            <div class="rwc-status solved">
+                                <span class="rwc-status-dot"></span>
+                                CONVICTED
+                            </div>
+                            <span class="rwc-read-more">Read Analysis →</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 3: Zodiac Killer -->
+                <div class="rwc-card reveal" data-rwc-cat="serial unsolved">
+                    <div class="rwc-card-visual">
+                        <div class="rwc-visual-bg rwc-bg-3"></div>
+                        <span class="rwc-country">🇺🇸 California, USA</span>
+                        <span class="rwc-year">1968–1969</span>
+                        <span class="rwc-visual-icon">🎯</span>
+                        <span class="rwc-classified">COLD CASE</span>
+                    </div>
+                    <div class="rwc-card-body">
+                        <h3>The Zodiac Killer — Ciphers & Cryptography</h3>
+                        <p>The Zodiac Killer murdered at least five people in Northern California and taunted police
+                            with encrypted letters. One cipher remained unsolved for 51 years until amateur codebreakers
+                            cracked it in 2020 — but the killer's identity remains unknown.</p>
+                        <div class="rwc-techniques">
+                            <span class="rwc-tech-tag">Cryptanalysis</span>
+                            <span class="rwc-tech-tag">Questioned Documents</span>
+                            <span class="rwc-tech-tag">Ballistics</span>
+                            <span class="rwc-tech-tag">Fingerprints</span>
+                        </div>
+                        <div class="rwc-outcome">
+                            <div class="rwc-status cold">
+                                <span class="rwc-status-dot"></span>
+                                COLD CASE
+                            </div>
+                            <span class="rwc-read-more">Read Analysis →</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 4: O.J. Simpson -->
+                <div class="rwc-card reveal" data-rwc-cat="murder landmark">
+                    <div class="rwc-card-visual">
+                        <div class="rwc-visual-bg rwc-bg-4"></div>
+                        <span class="rwc-country">🇺🇸 Los Angeles, USA</span>
+                        <span class="rwc-year">1994</span>
+                        <span class="rwc-visual-icon">🧤</span>
+                        <span class="rwc-classified">LANDMARK</span>
+                    </div>
+                    <div class="rwc-card-body">
+                        <h3>O.J. Simpson Trial — "If It Doesn't Fit"</h3>
+                        <p>The "Trial of the Century" exposed critical failures in forensic evidence handling. DNA
+                            evidence at the scene linked Simpson, but contamination claims and the famous glove
+                            demonstration led to acquittal — forever changing forensic protocols.</p>
+                        <div class="rwc-techniques">
+                            <span class="rwc-tech-tag">DNA Profiling</span>
+                            <span class="rwc-tech-tag">Blood Evidence</span>
+                            <span class="rwc-tech-tag">Chain of Custody</span>
+                            <span class="rwc-tech-tag">Serology</span>
+                        </div>
+                        <div class="rwc-outcome">
+                            <div class="rwc-status cold">
+                                <span class="rwc-status-dot"></span>
+                                ACQUITTED
+                            </div>
+                            <span class="rwc-read-more">Read Analysis →</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 5: Nirbhaya Case -->
+                <div class="rwc-card reveal" data-rwc-cat="murder landmark">
+                    <div class="rwc-card-visual">
+                        <div class="rwc-visual-bg rwc-bg-5"></div>
+                        <span class="rwc-country">🇮🇳 New Delhi, India</span>
+                        <span class="rwc-year">2012</span>
+                        <span class="rwc-visual-icon">⚖️</span>
+                        <span class="rwc-classified">HISTORIC</span>
+                    </div>
+                    <div class="rwc-card-body">
+                        <h3>Nirbhaya Case — Forensic Justice in India</h3>
+                        <p>The brutal gang rape and murder case that shook India and the world. Forensic evidence
+                            including DNA profiling, bite mark analysis, and digital forensics played a pivotal role in
+                            convicting all perpetrators and led to landmark changes in Indian criminal law.</p>
+                        <div class="rwc-techniques">
+                            <span class="rwc-tech-tag">DNA Analysis</span>
+                            <span class="rwc-tech-tag">Digital Forensics</span>
+                            <span class="rwc-tech-tag">Bite Marks</span>
+                            <span class="rwc-tech-tag">Serology</span>
+                        </div>
+                        <div class="rwc-outcome">
+                            <div class="rwc-status solved">
+                                <span class="rwc-status-dot"></span>
+                                CONVICTED
+                            </div>
+                            <span class="rwc-read-more">Read Analysis →</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 6: Aarushi Talwar -->
+                <div class="rwc-card reveal" data-rwc-cat="murder">
+                    <div class="rwc-card-visual">
+                        <div class="rwc-visual-bg rwc-bg-6"></div>
+                        <span class="rwc-country">🇮🇳 Noida, India</span>
+                        <span class="rwc-year">2008</span>
+                        <span class="rwc-visual-icon">🔍</span>
+                        <span class="rwc-classified">DEBATED</span>
+                    </div>
+                    <div class="rwc-card-body">
+                        <h3>Aarushi Talwar Double Murder — Crime Scene Controversy</h3>
+                        <p>The double murder of 13-year-old Aarushi and domestic help Hemraj remains one of India's most
+                            controversial cases. Botched crime scene handling, destroyed evidence, and conflicting
+                            forensic reports highlighted systemic failures in forensic investigation.</p>
+                        <div class="rwc-techniques">
+                            <span class="rwc-tech-tag">Crime Scene Mgmt</span>
+                            <span class="rwc-tech-tag">Blood Spatter</span>
+                            <span class="rwc-tech-tag">DNA Analysis</span>
+                            <span class="rwc-tech-tag">Digital Evidence</span>
+                        </div>
+                        <div class="rwc-outcome">
+                            <div class="rwc-status cold">
+                                <span class="rwc-status-dot"></span>
+                                ACQUITTED
+                            </div>
+                            <span class="rwc-read-more">Read Analysis →</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 7: BTK Killer -->
+                <div class="rwc-card reveal" data-rwc-cat="serial">
+                    <div class="rwc-card-visual">
+                        <div class="rwc-visual-bg rwc-bg-7"></div>
+                        <span class="rwc-country">🇺🇸 Kansas, USA</span>
+                        <span class="rwc-year">1974–2005</span>
+                        <span class="rwc-visual-icon">💀</span>
+                        <span class="rwc-classified">CASE FILE</span>
+                    </div>
+                    <div class="rwc-card-body">
+                        <h3>BTK Killer — Caught by Digital Forensics</h3>
+                        <p>Dennis Rader killed 10 people over 30 years while living as a church leader. After decades of
+                            evading capture, he was finally caught when digital forensics traced metadata from a floppy
+                            disk he sent to police — proving digital evidence can solve even the coldest cases.</p>
+                        <div class="rwc-techniques">
+                            <span class="rwc-tech-tag">Digital Forensics</span>
+                            <span class="rwc-tech-tag">Metadata Analysis</span>
+                            <span class="rwc-tech-tag">DNA Matching</span>
+                            <span class="rwc-tech-tag">Criminal Profiling</span>
+                        </div>
+                        <div class="rwc-outcome">
+                            <div class="rwc-status solved">
+                                <span class="rwc-status-dot"></span>
+                                CONVICTED
+                            </div>
+                            <span class="rwc-read-more">Read Analysis →</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 8: Black Dahlia -->
+                <div class="rwc-card reveal" data-rwc-cat="murder unsolved">
+                    <div class="rwc-card-visual">
+                        <div class="rwc-visual-bg rwc-bg-8"></div>
+                        <span class="rwc-country">🇺🇸 Los Angeles, USA</span>
+                        <span class="rwc-year">1947</span>
+                        <span class="rwc-visual-icon">🥀</span>
+                        <span class="rwc-classified">CLASSIFIED</span>
+                    </div>
+                    <div class="rwc-card-body">
+                        <h3>The Black Dahlia — Elizabeth Short Murder</h3>
+                        <p>The gruesome murder of aspiring actress Elizabeth Short remains LA's most famous unsolved
+                            case. Her body was surgically bisected and drained of blood — suggesting the killer had
+                            medical or anatomical knowledge. Over 60 suspects were investigated, but no one was ever
+                            charged.</p>
+                        <div class="rwc-techniques">
+                            <span class="rwc-tech-tag">Forensic Pathology</span>
+                            <span class="rwc-tech-tag">Autopsy Analysis</span>
+                            <span class="rwc-tech-tag">Fingerprints</span>
+                            <span class="rwc-tech-tag">Victimology</span>
+                        </div>
+                        <div class="rwc-outcome">
+                            <div class="rwc-status unsolved">
+                                <span class="rwc-status-dot"></span>
+                                UNSOLVED
+                            </div>
+                            <span class="rwc-read-more">Read Analysis →</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Stats bar -->
+            <div class="thriller-stats reveal">
+                <div class="thriller-stat">
+                    <h4 data-count="8">0</h4>
+                    <p>Case Files</p>
+                </div>
+                <div class="thriller-stat">
+                    <h4 data-count="6">0</h4>
+                    <p>Countries</p>
+                </div>
+                <div class="thriller-stat">
+                    <h4 data-count="130" data-suffix="+">0</h4>
+                    <p>Years of History</p>
+                </div>
+                <div class="thriller-stat">
+                    <h4 data-count="25" data-suffix="+">0</h4>
+                    <p>Forensic Techniques</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CAREER GUIDANCE ===== -->
+    <section class="section" id="career">
+        <div class="container">
+            <div class="reveal">
+                <div class="section-label">Career Guidance</div>
+                <h2 class="section-title">Your Path to <span>Forensic Excellence</span></h2>
+                <p class="section-desc">A comprehensive roadmap to building your career in forensic science — from
+                    education to professional practice.</p>
+            </div>
+            <div class="career-timeline reveal">
+                <div class="career-step">
+                    <div class="career-step-num">STEP 01</div>
+                    <h3>Foundation — Bachelor's Degree</h3>
+                    <p>Begin with a B.Sc. in Forensic Science, Chemistry, Biology, or a related discipline. Build a
+                        strong foundation in natural sciences, analytical chemistry, and basic criminalistics. Focus on
+                        laboratory skills and scientific methodology.</p>
+                </div>
+                <div class="career-step">
+                    <div class="career-step-num">STEP 02</div>
+                    <h3>Specialization — Master's Degree</h3>
+                    <p>Pursue an M.Sc. in Forensic Science with specialization in DNA Forensics, Toxicology, Cyber
+                        Forensics, Questioned Documents, or Forensic Psychology. This deepens expertise and opens
+                        advanced career paths.</p>
+                </div>
+                <div class="career-step">
+                    <div class="career-step-num">STEP 03</div>
+                    <h3>Practical Training & Internships</h3>
+                    <p>Gain hands-on experience through internships at FSL (Forensic Science Laboratories), police
+                        departments, or private forensic firms. Work on real cases under expert supervision. Build your
+                        portfolio of analyzed evidence.</p>
+                </div>
+                <div class="career-step">
+                    <div class="career-step-num">STEP 04</div>
+                    <h3>Certification & Competitive Exams</h3>
+                    <p>Clear NET/SET exams for academic positions, or prepare for state/central forensic lab recruitment
+                        examinations. Obtain professional certifications from bodies like IAI, ABC, or ABFT to enhance
+                        credibility.</p>
+                </div>
+                <div class="career-step">
+                    <div class="career-step-num">STEP 05</div>
+                    <h3>Professional Career</h3>
+                    <p>Launch your career as a Forensic Scientist, Crime Scene Investigator, Toxicologist, DNA Analyst,
+                        Cyber Forensic Expert, or Forensic Consultant. Opportunities exist in government labs, law
+                        enforcement, judiciary, and private sector.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== COMMUNITY FORUM ===== -->
+    <section class="section" id="community">
+        <div class="container">
+            <div class="reveal">
+                <div class="section-label">Community Forum</div>
+                <h2 class="section-title">Connect & <span>Collaborate</span></h2>
+                <p class="section-desc">Join thousands of forensic science students and professionals. Ask questions,
+                    share knowledge, and grow together.</p>
+            </div>
+            <div class="forum-grid">
+                <div class="forum-card reveal">
+                    <div class="forum-card-header">
+                        <div class="forum-avatar" style="background:rgba(0,212,255,0.2);color:var(--accent-cyan);">AK
+                        </div>
+                        <div>
+                            <h4>Best techniques for developing latent prints on rough surfaces?</h4>
+                            <div class="forum-meta">Ananya K. · 2 hours ago</div>
+                        </div>
+                    </div>
+                    <p>I've been struggling with magnetic powder on textured plastics. Anyone have tips for better
+                        results? Currently using Hi-Fi Volcano powder...</p>
+                    <div class="forum-stats">
+                        <span>💬 12 replies</span>
+                        <span>👍 34 upvotes</span>
+                        <span>👁️ 189 views</span>
+                    </div>
+                </div>
+                <div class="forum-card reveal">
+                    <div class="forum-card-header">
+                        <div class="forum-avatar" style="background:rgba(240,192,64,0.2);color:var(--accent-yellow);">RS
+                        </div>
+                        <div>
+                            <h4>How to interpret mixed DNA profiles from touch evidence?</h4>
+                            <div class="forum-meta">Rahul S. · 5 hours ago</div>
+                        </div>
+                    </div>
+                    <p>Working on a case study where the DNA sample has contributions from 3+ individuals. Looking for
+                        advice on mixture deconvolution approaches...</p>
+                    <div class="forum-stats">
+                        <span>💬 8 replies</span>
+                        <span>👍 21 upvotes</span>
+                        <span>👁️ 145 views</span>
+                    </div>
+                </div>
+                <div class="forum-card reveal">
+                    <div class="forum-card-header">
+                        <div class="forum-avatar" style="background:rgba(168,85,247,0.2);color:var(--accent-purple);">PM
+                        </div>
+                        <div>
+                            <h4>Career path: FSL scientist vs. private forensic consultant?</h4>
+                            <div class="forum-meta">Priya M. · 1 day ago</div>
+                        </div>
+                    </div>
+                    <p>Completing my M.Sc. in Forensic Science next year. Torn between applying to government FSL or
+                        starting in private consulting. What are the pros and cons?</p>
+                    <div class="forum-stats">
+                        <span>💬 24 replies</span>
+                        <span>👍 56 upvotes</span>
+                        <span>👁️ 312 views</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== QUIZ & CERTIFICATION ===== -->
+    <section class="section" id="quiz">
+        <div class="container">
+            <div class="quiz-banner reveal">
+                <div class="quiz-content">
+                    <h2>Test Your <span class="highlight-yellow">Forensic Knowledge</span></h2>
+                    <p>Take our comprehensive quizzes, earn certificates, and track your progress across all forensic
+                        disciplines.</p>
+                    <div class="hero-btns">
+                        <a href="#" class="btn-primary">🏆 Start Assessment</a>
+                        <a href="#" class="btn-secondary">📜 View Certificates</a>
+                    </div>
+                </div>
+                <div class="quiz-stats-row">
+                    <div class="quiz-stat">
+                        <h4 data-count="500" data-suffix="+">0</h4>
+                        <p>Questions</p>
+                    </div>
+                    <div class="quiz-stat">
+                        <h4 data-count="15">0</h4>
+                        <p>Categories</p>
+                    </div>
+                    <div class="quiz-stat">
+                        <h4 data-count="3200" data-suffix="+">0</h4>
+                        <p>Certified</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BLOG PREVIEW ===== -->
+    <section class="section" id="blog" style="padding-top:40px;">
+        <div class="container">
+            <div class="reveal">
+                <div class="section-label">Forensic Blog</div>
+                <h2 class="section-title">Latest <span>Updates</span></h2>
+            </div>
+            <div class="experiments-grid" style="margin-top:32px;">
+                <div class="experiment-card reveal">
+                    <div class="experiment-icon cyan">📰</div>
+                    <h3>AI in Forensic Science: The Future of Evidence Analysis</h3>
+                    <p>How machine learning algorithms are revolutionizing fingerprint matching, facial recognition, and
+                        digital evidence processing.</p>
+                    <div class="experiment-tags">
+                        <span class="experiment-tag">AI/ML</span>
+                        <span class="experiment-tag">Mar 2026</span>
+                    </div>
+                </div>
+                <div class="experiment-card reveal">
+                    <div class="experiment-icon yellow">📰</div>
+                    <h3>Advances in Rapid DNA Technology</h3>
+                    <p>Exploring the latest rapid DNA instruments capable of generating DNA profiles in under 2 hours
+                        for crime scene processing.</p>
+                    <div class="experiment-tags">
+                        <span class="experiment-tag">DNA</span>
+                        <span class="experiment-tag">Feb 2026</span>
+                    </div>
+                </div>
+                <div class="experiment-card reveal">
+                    <div class="experiment-icon purple">📰</div>
+                    <h3>Cyber Forensics: Investigating Cryptocurrency Crimes</h3>
+                    <p>Methods and tools used by digital forensic investigators to trace blockchain transactions and
+                        identify cyber criminals.</p>
+                    <div class="experiment-tags">
+                        <span class="experiment-tag">Cyber</span>
+                        <span class="experiment-tag">Jan 2026</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="nav-logo">
+                        <div class="logo-icon">🔬</div>
+                        <div>
+                            <div>ForensicLab</div>
+                            <div class="logo-text-sub">Academy</div>
+                        </div>
+                    </a>
+                    <p>Empowering forensic science students with practical knowledge, virtual lab experience, and career
+                        guidance. Learn, practice, and excel in forensic investigation.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="footer-social" aria-label="Twitter">𝕏</a>
+                        <a href="#" class="footer-social" aria-label="LinkedIn">in</a>
+                        <a href="#" class="footer-social" aria-label="YouTube">▶</a>
+                        <a href="#" class="footer-social" aria-label="Instagram">📷</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>PLATFORM</h4>
+                    <a href="#lab">Virtual Lab</a>
+                    <a href="#crime-scene">Crime Scene Sim</a>
+                    <a href="#resources">Study Resources</a>
+                    <a href="#evidence">Evidence Library</a>
+                    <a href="#quiz">Quizzes</a>
+                </div>
+                <div class="footer-col">
+                    <h4>RESOURCES</h4>
+                    <a href="#">Lab Reports</a>
+                    <a href="#">Viva Questions</a>
+                    <a href="#">Mock Tests</a>
+                    <a href="#">Diagrams</a>
+                    <a href="#">Glossary</a>
+                </div>
+                <div class="footer-col">
+                    <h4>COMPANY</h4>
+                    <a href="#">About Us</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#career">Careers</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 ForensicLab Academy. Built for forensic science education.</p>
+                <p>Designed with 🔬 for investigators worldwide</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== EXPERIMENT MODAL ===== -->
+    <div class="modal-overlay" id="experimentModal">
+        <div class="modal">
+            <button class="modal-close">✕</button>
+            <div class="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
